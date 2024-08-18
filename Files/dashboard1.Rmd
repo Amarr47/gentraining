@@ -1,0 +1,47 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+```
+
+Column {data-width=333}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+set.seed(110)
+df = matrix(rnorm(100,0,5),nrow=10,ncol=10)
+colnames(df) = paste0("col",c(1:10))
+rownames(df) = paste0("Row",c(1:10))
+heatmap(df)
+```
+
+Column {data-width=333}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+data = data.frame(sub = c('C++','C','Java','Python'),
+                  num = c(55,70,68,45))
+ggplot(data,aes(x=sub,y=num,group=55))+geom_point()+geom_line()
+
+```
+
+### Chart C
+
+```{r}
+ggplot(mpg)+geom_bar(aes(x=class))
+
+```
+
